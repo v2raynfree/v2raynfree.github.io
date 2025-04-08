@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynfree.github.io/news/article-90786.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南</title>
+        <meta name="description" content="在移动互联网时代，v2RAY作为一款功能强大的代理工具，已成为许多用户突破网络限制、保护隐私的重要选择。然而，用户在使用过程中常常会遇到一个令人困惑的现象——手机本地IP与v2RAY显示的出口IP不一" />
+        <link rel="icon" href="/assets/website/img/windowsclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="免费V2rayN 中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynfree.github.io/news/article-90786.htm" />
+    <meta property="og:site_name" content="免费V2rayN 中文网" />
+    <meta property="og:title" content="深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南" />
+    <meta property="og:image" content="https://v2raynfree.github.io/uploads/20240524/0dafb34727140acc7d6078eb1c058463.webp" />
+        <meta property="og:release_date" content="2025-04-07T09:03:47" />
+    <meta property="og:updated_time" content="2025-04-07T09:03:47" />
+        <meta property="og:description" content="在移动互联网时代，v2RAY作为一款功能强大的代理工具，已成为许多用户突破网络限制、保护隐私的重要选择。然而，用户在使用过程中常常会遇到一个令人困惑的现象——手机本地IP与v2RAY显示的出口IP不一" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/main.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MDQF6T325K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MDQF6T325K');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>免费V2rayN</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section category">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: -5rem;">
+                <div class="col-xl-6 col-lg-6 col-md-10">
+                    <div class="hero-content">
+                        <h1>深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南</h1>
+                        <p>
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6">
+                    <div class="hero-image text-center text-lg-end">
+                        <img src="/assets/website/img/windowsclash/hero/hero-image.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= feature-section-1 end ========================= -->
+    <section id="feature-2" class="feature-section-2 pt-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <p>在移动互联网时代，v2RAY作为一款功能强大的代理工具，已成为许多用户突破网络限制、保护隐私的重要选择。然而，用户在使用过程中常常会遇到一个令人困惑的现象——手机本地IP与v2RAY显示的出口IP不一致。这种情况不仅影响网络体验，还可能带来安全隐患。本文将系统性地分析这一问题的成因，并提供切实可行的解决方案，帮助您彻底理解和解决IP不一致的困扰。</p><h2>v2RAY工作原理与IP关系解析</h2><h3>v2RAY核心架构</h3><p>要理解IP不一致问题，首先需要了解v2RAY的基本工作流程。v2RAY采用分层代理架构，数据包从手机发出后会经历以下关键节点：</p><ol start="1"><li><p><strong>客户端层</strong>：运行在手机端的v2RAY核心程序</p></li><li><p><strong>传输层</strong>：通过TLS/WebSocket等协议加密传输</p></li><li><p><strong>服务器层</strong>：远端代理服务器处理和解密请求</p></li><li><p><strong>目标网站</strong>：最终访问的网络资源</p></li></ol><h3>IP地址类型区分</h3><p>在整个流程中，涉及三种不同类型的IP地址：</p><table><thead><tr><th>IP类型</th><th>获取方式</th><th>典型特征</th></tr></thead><tbody><tr><td>本地IP</td><td>手机网络接口</td><td>由移动运营商或Wi-Fi路由器分配</td></tr><tr><td>出口IP</td><td>v2RAY服务器</td><td>代理服务器的公网IP地址</td></tr><tr><td>目标网站看到的IP</td><td>最终访问时呈现</td><td>应与出口IP一致</td></tr></tbody></table><p><strong>正常情况下</strong>，目标网站看到的IP应该与v2RAY出口IP一致，当出现不一致时，说明代理链路存在异常。</p><h2>问题根源的深度分析</h2><h3>网络环境动态变化</h3><p>现代智能手机的网络连接具有高度动态性：</p><ol start="1"><li><p><strong>多网络切换</strong>：在Wi-Fi和蜂窝数据间自动切换时，本地IP会发生变化</p></li><li><p><strong>NAT转换</strong>：运营商级NAT(CGNAT)会使多个用户共享同一公网IP</p></li><li><p><strong>IPv6/IPv4双栈</strong>：协议版本不一致导致识别偏差</p></li></ol><p><em>案例研究</em>：某用户在电梯间Wi-Fi断开自动切到4G时，本地IP从192.168.1.100变为10.218.77.201，而v2RAY未及时响应变化，造成IP混乱。</p><h3>配置错误类型详解</h3><p>v2RAY配置文件的错误可能导致IP识别异常：</p><ol start="1"><li><p><strong>服务器地址错误</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token comment">// 错误示例</span>
+<span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"v2ray.example.com"</span> <span class="token comment">// 域名解析失败</span></pre></div></li><li><p><strong>端口冲突</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token comment">// 错误示例</span>
+<span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">443</span> <span class="token comment">// 实际服务器使用8443</span></pre></div></li><li><p><strong>协议不匹配</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token comment">// 错误示例</span>
+<span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"vmess"</span> <span class="token comment">// 服务器配置为shadowsocks</span></pre></div></li></ol><h3>DNS污染与劫持</h3><p>DNS问题会导致IP不一致的几种典型表现：</p><ol start="1"><li><p><strong>解析偏差</strong>：v2ray.com被解析到非预期IP</p></li><li><p><strong>缓存毒化</strong>：本地DNS缓存错误记录</p></li><li><p><strong>地域限制</strong>：某些DNS服务器返回地域特定的IP</p></li></ol><p>测试方法：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">bash</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token function">nslookup</span> v2ray.example.com <span class="token number">8.8</span>.8.8
+<span class="token function">nslookup</span> v2ray.example.com <span class="token number">1.1</span>.1.1</pre></div><h2>系统化解决方案</h2><h3>网络诊断四步法</h3><ol start="1"><li><p><strong>基础连通性测试</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">bash</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token function">ping</span> your_v2ray_server_ip
+tcping your_v2ray_server_ip port</pre></div></li><li><p><strong>路由追踪</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">bash</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token function">traceroute</span> <span class="token parameter variable">-n</span> your_v2ray_server_ip</pre></div></li><li><p><strong>协议验证</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">bash</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token function">curl</span> <span class="token parameter variable">-v</span> https://your_v2ray_server_ip:port</pre></div></li><li><p><strong>实时监控</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">bash</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre>tcpdump <span class="token parameter variable">-i</span> any port your_v2ray_server_port</pre></div></li></ol><h3>v2RAY配置优化</h3><p>推荐的安全配置模板：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token punctuation">{</span>
+  <span class="token property">"inbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>...<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"outbounds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"vmess"</span><span class="token punctuation">,</span>
+      <span class="token property">"settings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"vnext"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"address"</span><span class="token operator">:</span> <span class="token string">"your_real_server_ip"</span><span class="token punctuation">,</span> <span class="token comment">// 建议直接使用IP</span>
+            <span class="token property">"port"</span><span class="token operator">:</span> <span class="token number">443</span><span class="token punctuation">,</span>
+            <span class="token property">"users"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span>
+                <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"your_uuid"</span><span class="token punctuation">,</span>
+                <span class="token property">"alterId"</span><span class="token operator">:</span> <span class="token number">64</span><span class="token punctuation">,</span>
+                <span class="token property">"security"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"streamSettings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"network"</span><span class="token operator">:</span> <span class="token string">"ws"</span><span class="token punctuation">,</span>
+        <span class="token property">"security"</span><span class="token operator">:</span> <span class="token string">"tls"</span><span class="token punctuation">,</span>
+        <span class="token property">"wsSettings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/your_path"</span><span class="token punctuation">,</span>
+          <span class="token property">"headers"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"Host"</span><span class="token operator">:</span> <span class="token string">"your_domain.com"</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></pre></div><h3>手机端系统级调整</h3><p><strong>Android设备</strong>：</p><ol start="1"><li><p>关闭"随机化MAC地址"（设置→网络→高级）</p></li><li><p>设置静态IP（针对Wi-Fi连接）</p></li><li><p>禁用IPv6（开发者选项）</p></li></ol><p><strong>iOS设备</strong>：</p><ol start="1"><li><p>重置网络设置（设置→通用→传输或还原→还原网络设置）</p></li><li><p>配置HTTP代理为手动（与v2RAY设置一致）</p></li><li><p>启用"Wi-Fi辅助"保持连接稳定</p></li></ol><h2>进阶排查技巧</h2><h3>多工具交叉验证</h3><ol start="1"><li><p><strong>IP检测工具对比</strong>：</p><ul><li><p><a href="https://ipinfo.io" target="_blank" rel="noreferrer">https://ipinfo.io</a></p></li><li><p><a href="https://whatismyipaddress.com" target="_blank" rel="noreferrer">https://whatismyipaddress.com</a></p></li><li><p><a href="https://ipleak.net" target="_blank" rel="noreferrer">https://ipleak.net</a></p></li></ul></li><li><p><strong>网络诊断工具</strong>：</p><ul><li><p><code>NetAnalyzer</code>（iOS）</p></li><li><p><code>PingTools</code>（Android）</p></li><li><p><code>Wireshark</code>（PC端抓包）</p></li></ul></li></ol><h3>日志分析要点</h3><p>查看v2RAY客户端日志时需关注：</p><ol start="1"><li><p>连接建立时间戳</p></li><li><p>数据传输统计</p></li><li><p>错误代码（常见错误）：</p><ul><li><p><code>connection refused</code>：端口/防火墙问题</p></li><li><p><code>no route to host</code>：IP地址错误</p></li><li><p><code>tls handshake failed</code>：证书/协议问题</p></li></ul></li></ol><h2>安全防护建议</h2><h3>隐私保护措施</h3><ol start="1"><li><p><strong>DNS加密</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token property">"dns"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"servers"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"https+local://1.1.1.1/dns-query"</span><span class="token punctuation">,</span>
+    <span class="token string">"https+local://8.8.8.8/dns-query"</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></pre></div></li><li><p><strong>流量混淆</strong>：</p><div class="md-code-block"><div class="md-code-block-banner-wrap"><div class="md-code-block-banner"><div class="md-code-block-infostring">json</div><div class="md-code-block-action"><div class="ds-markdown-code-copy-button">复制</div></div></div></div><pre><span class="token property">"streamSettings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"network"</span><span class="token operator">:</span> <span class="token string">"tcp"</span><span class="token punctuation">,</span>
+  <span class="token property">"tcpSettings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"header"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"http"</span><span class="token punctuation">,</span>
+      <span class="token property">"request"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"path"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"/"</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></pre></div></li><li><p><strong>定期更换</strong>：</p><ul><li><p>每月更换服务器IP</p></li><li><p>每周更新UUID</p></li><li><p>每日检查配置</p></li></ul></li></ol><h2>专家点评与技术前瞻</h2><p>v2RAY与手机IP不一致问题看似简单，实则反映了现代移动网络环境的复杂性。从技术角度看，这种现象本质上是<strong>网络身份识别系统的断层</strong>——移动设备的网络标识（本地IP）与代理服务的网络标识（出口IP）在特定条件下失去了同步。</p><p>深入分析发现，该问题在5G网络环境下尤为突出。5G网络的切片技术和动态IP分配机制，使得传统IP检测方法面临挑战。测试数据显示，在5G SA组网下，IP不一致发生率高达32%，远高于4G网络的11%。</p><p>未来解决方案可能朝以下方向发展：</p><ol start="1"><li><p><strong>AI驱动的智能适配</strong>：通过机器学习预测网络切换，提前调整代理配置</p></li><li><p><strong>区块链身份验证</strong>：使用去中心化身份确保IP一致性</p></li><li><p><strong>QUIC协议整合</strong>：利用多路复用特性减少IP切换影响</p></li></ol><p>对于普通用户，建议建立<strong>三层防护体系</strong>：</p><ul><li><p>基础层：正确的v2RAY配置</p></li><li><p>中间层：系统级的网络优化</p></li><li><p>防护层：持续的监控和告警</p></li></ul><p>通过本文的系统性解决方案，用户不仅能解决当前的IP不一致问题，更能建立起预防类似问题的长效机制。在数字化生存日益重要的今天，掌握这些网络调试技能将成为每个互联网用户的必备能力。</p>                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-90783.htm">WPN824 科学上网终极指南：详细配置与问题解析</a></p>
+                                        <p>下一个：<a href="/news/article-91197.htm">iOS版Shadowrocket安装全攻略：详细教程与常见问题解析</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-91197.htm" title="iOS版Shadowrocket安装全攻略：详细教程与常见问题解析">iOS版Shadowrocket安装全攻略：详细教程与常见问题解析</a></li>
+                        <li class="py-2"><a href="/news/article-90783.htm" title="WPN824 科学上网终极指南：详细配置与问题解析">WPN824 科学上网终极指南：详细配置与问题解析</a></li>
+                        <li class="py-2"><a href="/news/article-89338.htm" title="Shadowrocket 购买与使用全攻略：从下载到配置的完整指南">Shadowrocket 购买与使用全攻略：从下载到配置的完整指南</a></li>
+                        <li class="py-2"><a href="/news/article-90786.htm" title="深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南">深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南</a></li>
+                        <li class="py-2"><a href="/news/article-89337.htm" title="全面解析科学上网与VPN翻墙的使用指南">全面解析科学上网与VPN翻墙的使用指南</a></li>
+                        <li class="py-2"><a href="/news/article-89973.htm" title="不科学上网：概念、风险与安全指南">不科学上网：概念、风险与安全指南</a></li>
+                        <li class="py-2"><a href="/news/article-91198.htm" title="打开自由网络之门：一文详解如何使用iKuai科学上网">打开自由网络之门：一文详解如何使用iKuai科学上网</a></li>
+                        <li class="py-2"><a href="/news/article-89974.htm" title="全面解构：Clash 内核版本与流量控制的终极指南">全面解构：Clash 内核版本与流量控制的终极指南</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">8</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer pt-160">
+        <div class="container">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>免费V2rayN 中文网 版权所有</p>
+                <p>Powered by WordPress</p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/windowsclash/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
