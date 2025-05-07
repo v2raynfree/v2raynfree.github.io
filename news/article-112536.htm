@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://v2raynfree.github.io/news/article-112536.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>在Heroku上无法使用V2Ray的原因及解决方案分析</title>
+        <meta name="description" content="V2Ray作为一款强大的网络代理工具，广泛用于帮助用户突破网络限制，保护隐私，并提升上网安全性。它提供了丰富的功能和灵活的配置选项，支持多种传输协议，可以帮助用户在复杂的网络环境中建立稳定的代理服务。" />
+        <link rel="icon" href="/assets/website/img/windowsclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="免费V2rayN 中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://v2raynfree.github.io/news/article-112536.htm" />
+    <meta property="og:site_name" content="免费V2rayN 中文网" />
+    <meta property="og:title" content="在Heroku上无法使用V2Ray的原因及解决方案分析" />
+    <meta property="og:image" content="https://v2raynfree.github.io/uploads/20240524/a2fb80c2ea02e272a759e2bb3813497f.webp" />
+        <meta property="og:release_date" content="2025-05-06T08:45:56" />
+    <meta property="og:updated_time" content="2025-05-06T08:45:56" />
+        <meta property="og:description" content="V2Ray作为一款强大的网络代理工具，广泛用于帮助用户突破网络限制，保护隐私，并提升上网安全性。它提供了丰富的功能和灵活的配置选项，支持多种传输协议，可以帮助用户在复杂的网络环境中建立稳定的代理服务。" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="在Heroku上无法使用V2Ray的原因及解决方案分析">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/windowsclash/main.css" />
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MDQF6T325K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MDQF6T325K');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                                        <span>免费V2rayN</span>
+                                                        </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section category">
+        <div class="container">
+            <div class="row align-items-center" style="margin-top: -5rem;">
+                <div class="col-xl-6 col-lg-6 col-md-10">
+                    <div class="hero-content">
+                        <h1>在Heroku上无法使用V2Ray的原因及解决方案分析</h1>
+                        <p>
+                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6">
+                    <div class="hero-image text-center text-lg-end">
+                        <img src="/assets/website/img/windowsclash/hero/hero-image.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= feature-section-1 end ========================= -->
+    <section id="feature-2" class="feature-section-2 pt-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                    
+<p data-start="31" data-end="178" class="">V2Ray作为一款强大的网络代理工具，广泛用于帮助用户突破网络限制，保护隐私，并提升上网安全性。它提供了丰富的功能和灵活的配置选项，支持多种传输协议，可以帮助用户在复杂的网络环境中建立稳定的代理服务。然而，尽管V2Ray功能强大，仍然有不少用户在使用Heroku平台时遇到了无法正常运行的问题。</p>
+<p data-start="180" data-end="335" class="">Heroku作为一款便捷的云平台，凭借其简单的部署流程和自动扩展功能，吸引了大量开发者和用户的关注。然而，由于Heroku平台的特殊环境和网络限制，V2Ray在Heroku上的运行时常常受到制约。本文将深入探讨在Heroku上使用V2Ray所遇到的问题，并提供相应的解决方案，希望能够帮助开发者们解决这一困扰。</p>
+<h2 data-start="337" data-end="349" class="">什么是V2Ray？</h2>
+<p data-start="351" data-end="397" class="">V2Ray是一款开源的代理工具，旨在帮助用户构建代理服务，以绕过网络限制。它的主要功能包括：</p>
+<ul data-start="399" data-end="568">
+<li data-start="399" data-end="475" class="" style="">
+<p data-start="401" data-end="475" class=""><strong data-start="401" data-end="412">多传输协议支持</strong>：V2Ray支持多种传输协议，如VMess、Shadowsocks、HTTP、SOCKS等，能够根据不同的需求提供灵活的配置。</p>
+</li>
+<li data-start="476" data-end="525" class="" style="">
+<p data-start="478" data-end="525" class=""><strong data-start="478" data-end="486">路由配置</strong>：用户可以根据不同的需求对网络流量进行灵活的路由配置，以提高网络效率和安全性。</p>
+</li>
+<li data-start="526" data-end="568" class="" style="">
+<p data-start="528" data-end="568" class=""><strong data-start="528" data-end="537">高性能优化</strong>：V2Ray经过高度优化，能够提供稳定的网络连接和较低的延迟。</p>
+</li>
+</ul>
+<p data-start="570" data-end="584" class="">V2Ray主要用于以下场景：</p>
+<ul data-start="586" data-end="644">
+<li data-start="586" data-end="602" class="" style="">
+<p data-start="588" data-end="602" class="">保护用户隐私，避免网络监控。</p>
+</li>
+<li data-start="603" data-end="623" class="">
+<p data-start="605" data-end="623" class="">绕过地理位置限制，访问被屏蔽的网站。</p>
+</li>
+<li data-start="624" data-end="644" class="">
+<p data-start="626" data-end="644" class="">提高网络连接的安全性，防止数据泄露。</p>
+</li>
+</ul>
+<h2 data-start="646" data-end="659" class="">什么是Heroku？</h2>
+<p data-start="661" data-end="726" class="">Heroku是一个领先的云平台，允许用户构建、运行和运营应用程序。作为一个PaaS（平台即服务）平台，Heroku的主要特点包括：</p>
+<ul data-start="728" data-end="901">
+<li data-start="728" data-end="798" class="">
+<p data-start="730" data-end="798" class=""><strong data-start="730" data-end="739">多语言支持</strong>：Heroku支持多种编程语言，包括Ruby、Python、Java、Go等，用户可以根据需求选择合适的语言进行开发。</p>
+</li>
+<li data-start="799" data-end="851" class="">
+<p data-start="801" data-end="851" class=""><strong data-start="801" data-end="809">自动扩展</strong>：Heroku能够根据应用程序的负载自动扩展资源，保证应用在高并发情况下的稳定运行。</p>
+</li>
+<li data-start="852" data-end="901" class="">
+<p data-start="854" data-end="901" class=""><strong data-start="854" data-end="865">便捷的资源管理</strong>：Heroku为用户提供了简便的管理界面，可以帮助用户轻松管理应用资源。</p>
+</li>
+</ul>
+<p data-start="903" data-end="964" class="">然而，Heroku的优势也伴随着一些限制，尤其是在部署需要特殊配置的网络工具（如V2Ray）时，用户可能会遇到一系列问题。</p>
+<h2 data-start="966" data-end="988" class="">为什么Heroku无法使用V2Ray？</h2>
+<p data-start="990" data-end="1085" class="">尽管Heroku作为云平台提供了强大的功能，但在某些特殊工具的部署上，Heroku还是存在一定的限制，V2Ray便是其中之一。以下是导致V2Ray无法在Heroku上正常运行的几个主要原因：</p>
+<h3 data-start="1087" data-end="1105" class="">1. Heroku的网络限制</h3>
+<p data-start="1107" data-end="1245" class="">Heroku平台在网络访问方面存在一定的限制，尤其是在数据传输的速度和协议支持上。这些限制直接影响了V2Ray的多传输协议特性。V2Ray支持多种协议（如VMess、Shadowsocks、HTTP等），但是在Heroku环境下，这些协议可能会遇到阻碍，导致代理无法正常工作。</p>
+<h3 data-start="1247" data-end="1264" class="">2. 部署过程中的包不兼容</h3>
+<p data-start="1266" data-end="1368" class="">在Heroku上部署V2Ray时，可能会遇到包和库不兼容的问题。Heroku的运行环境对于某些依赖库和系统设置要求较高，而V2Ray的某些版本可能与Heroku的环境存在不兼容问题。常见的包或库问题包括：</p>
+<ul data-start="1370" data-end="1416">
+<li data-start="1370" data-end="1381" class="">
+<p data-start="1372" data-end="1381" class="">缺少必要的依赖库。</p>
+</li>
+<li data-start="1382" data-end="1392" class="">
+<p data-start="1384" data-end="1392" class="">配置错误或缺失。</p>
+</li>
+<li data-start="1393" data-end="1416" class="">
+<p data-start="1395" data-end="1416" class="">与Heroku平台的操作系统或版本不兼容。</p>
+</li>
+</ul>
+<h3 data-start="1418" data-end="1431" class="">3. 环境配置不当</h3>
+<p data-start="1433" data-end="1549" class="">V2Ray的部署和运行需要精确的环境配置，包括服务器地址、端口、协议类型、用户认证等。如果配置不当，V2Ray无法成功连接到目标服务器，导致无法提供代理服务。在Heroku上，某些环境配置的要求可能与其他平台不同，容易导致配置错误。</p>
+<h3 data-start="1551" data-end="1569" class="">4. HTTP代理模式的问题</h3>
+<p data-start="1571" data-end="1694" class="">许多用户希望使用V2Ray的HTTP代理功能，但在Heroku平台上，由于HTTP流量的特殊处理方式，可能会导致V2Ray无法正常工作。Heroku没有提供完整的支持HTTP协议的流水线，这使得V2Ray在使用HTTP代理模式时会遇到额外的困难。</p>
+<h2 data-start="1696" data-end="1719" class="">在Heroku上运行V2Ray的解决方案</h2>
+<p data-start="1721" data-end="1786" class="">尽管Heroku平台存在一定的限制，但通过一些调整和技巧，我们仍然可以让V2Ray在Heroku上运行。以下是几种可能的解决方案：</p>
+<h3 data-start="1788" data-end="1801" class="">1. 使用伪装技术</h3>
+<p data-start="1803" data-end="1932" class="">为了绕过Heroku对网络流量的限制，用户可以尝试将V2Ray伪装成正常的HTTP或HTTPS流量，从而穿透Heroku的网络过滤器。例如，可以在V2Ray的配置中将应用服务器伪装为常见的HTTP流量，定制V2Ray的运行设置，以适应Heroku平台的要求。</p>
+<h3 data-start="1934" data-end="1953" class="">2. 检查并更新V2Ray配置</h3>
+<p data-start="1955" data-end="1992" class="">V2Ray的配置文件需要根据Heroku平台的要求进行调整。确保以下几点：</p>
+<ul data-start="1994" data-end="2134">
+<li data-start="1994" data-end="2043" class="">
+<p data-start="1996" data-end="2043" class=""><strong data-start="1996" data-end="2008">配置文件版本更新</strong>：确保使用的是V2Ray的最新版本，避免由于版本过旧导致的不兼容问题。</p>
+</li>
+<li data-start="2044" data-end="2078" class="">
+<p data-start="2046" data-end="2078" class=""><strong data-start="2046" data-end="2057">端口与协议匹配</strong>：确保配置文件中定义的端口与协议完全对应。</p>
+</li>
+<li data-start="2079" data-end="2134" class="">
+<p data-start="2081" data-end="2134" class=""><strong data-start="2081" data-end="2094">选择合适的传输方式</strong>：如果需要使用WebSocket或RUDP等传输方式，确保在配置文件中正确设置。</p>
+</li>
+</ul>
+<h3 data-start="2136" data-end="2156" class="">3. 跟踪Heroku的实时提示</h3>
+<p data-start="2158" data-end="2283" class="">在部署V2Ray时，Heroku提供了日志服务，用户可以通过<code data-start="2188" data-end="2201">heroku logs</code>命令查看实时日志。通过分析日志，用户可以判断当前服务的状态，查看是否有配置错误或其他问题。如果V2Ray无法正常启动，日志中的错误信息将帮助用户定位问题并及时解决。</p>
+<h3 data-start="2285" data-end="2301" class="">4. 考虑使用其他云平台</h3>
+<p data-start="2303" data-end="2349" class="">如果上述方法无法解决问题，用户可以考虑将V2Ray迁移到其他支持网络代理工具的云平台。例如：</p>
+<ul data-start="2351" data-end="2564">
+<li data-start="2351" data-end="2416" class="">
+<p data-start="2353" data-end="2416" class=""><strong data-start="2353" data-end="2381">AWS（Amazon Web Services）</strong>：AWS提供了灵活的服务器配置，适合运行需要较高自定义配置的代理工具。</p>
+</li>
+<li data-start="2417" data-end="2487" class="">
+<p data-start="2419" data-end="2487" class=""><strong data-start="2419" data-end="2444">Google Cloud Platform</strong>：Google Cloud也支持V2Ray的部署，并且提供更高的自由度来调整网络设置。</p>
+</li>
+<li data-start="2488" data-end="2564" class="">
+<p data-start="2490" data-end="2564" class=""><strong data-start="2490" data-end="2506">DigitalOcean</strong>：作为一个面向开发者的云平台，DigitalOcean提供了易于管理的虚拟私有服务器，可以运行V2Ray等代理工具。</p>
+</li>
+</ul>
+<h2 data-start="2566" data-end="2575" class="">常见问题解答</h2>
+<h3 data-start="2577" data-end="2607" class="">Q1: 如何在Heroku端口上正确设置V2Ray？</h3>
+<p data-start="2609" data-end="2690" class="">在Heroku上，您需要确保V2Ray在配置文件中使用动态端口（例如<code data-start="2643" data-end="2650">$PORT</code>）来替代硬编码的端口号。这样可以确保V2Ray能够与Heroku的网络环境兼容。</p>
+<h3 data-start="2692" data-end="2722" class="">Q2: 是否可以在Node等其他服务上直接创建代理？</h3>
+<p data-start="2724" data-end="2789" class="">是的，您可以使用自定义的中间层应用程序，例如Node.js应用，来搭建代理服务。通过这种方式，您可以灵活地处理流量转发和代理请求。</p>
+<h3 data-start="2791" data-end="2820" class="">Q3: V2Ray能与哪些编程语言或框架一起使用？</h3>
+<p data-start="2822" data-end="2911" class="">V2Ray的核心是用Go语言编写的，但它也可以与其他编程语言（如Python、Node.js、Ruby等）搭配使用。只要进行适当的编码和配置，其他语言也能够与V2Ray正常兼容。</p>
+<h3 data-start="2913" data-end="2946" class="">Q4: 为什么不能直接使用GitHub上的V2Ray版本？</h3>
+<p data-start="2948" data-end="3028" class="">由于V2Ray的一些版本可能不支持最新的路径或配置，因此直接从GitHub下载的版本可能无法满足您的需求。建议使用发布的稳定版标签，以确保更高的兼容性和稳定性。</p>
+<h2 data-start="3030" data-end="3035" class="">总结</h2>
+<p data-start="3037" data-end="3195" class="">V2Ray作为一款强大的网络代理工具，能够帮助用户突破网络限制，保护隐私，提高网络安全。然而，在Heroku平台上运行V2Ray时，用户可能会面临一系列挑战，包括网络限制、配置问题和库不兼容等。通过采用伪装技术、更新配置、跟踪实时日志和选择合适的云平台，用户可以有效解决这些问题，成功在Heroku上运行V2Ray。</p>
+<p data-start="3197" data-end="3288" class="">如果在Heroku上仍然无法顺利部署V2Ray，尝试迁移到其他云平台可能是一个更好的选择。希望本文提供的解决方案能帮助您解决在Heroku上使用V2Ray的问题，恢复流畅的网络体验。</p>                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-112198.htm">iOS用户必读：科学上网的终极指南与最佳实践</a></p>
+                                        <p>下一个：<a href="/news/article-112538.htm">v2ray盒子导入节点全攻略：轻松实现科学上网与隐私保护</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-93762.htm" title="全面指南：科学上网账号密码获取与使用详解，助你畅游自由网络世界">全面指南：科学上网账号密码获取与使用详解，助你畅游自由网络世界</a></li>
+                        <li class="py-2"><a href="/news/article-91197.htm" title="iOS版Shadowrocket安装全攻略：详细教程与常见问题解析">iOS版Shadowrocket安装全攻略：详细教程与常见问题解析</a></li>
+                        <li class="py-2"><a href="/news/article-97399.htm" title="深入探讨V2Ray协议伪装技术：保护隐私，突破网络审查">深入探讨V2Ray协议伪装技术：保护隐私，突破网络审查</a></li>
+                        <li class="py-2"><a href="/news/article-106484.htm" title="全面解析筋斗云v2ray优惠码：获取、使用与常见问题解答">全面解析筋斗云v2ray优惠码：获取、使用与常见问题解答</a></li>
+                        <li class="py-2"><a href="/news/article-102654.htm" title="v2rayng使用全解析：如何高效、安全地翻墙">v2rayng使用全解析：如何高效、安全地翻墙</a></li>
+                        <li class="py-2"><a href="/news/article-98244.htm" title="完全解析《Clash夜世界》：游戏攻略与技巧">完全解析《Clash夜世界》：游戏攻略与技巧</a></li>
+                        <li class="py-2"><a href="/news/article-90786.htm" title="深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南">深度解析v2RAY与手机IP不一致问题：从原理到解决方案的全方位指南</a></li>
+                        <li class="py-2"><a href="/news/article-110131.htm" title="如何在鸿蒙操作系统中配置Clash服务：提升网络体验的详细指南">如何在鸿蒙操作系统中配置Clash服务：提升网络体验的详细指南</a></li>
+                        <li class="py-2"><a href="/news/article-90783.htm" title="WPN824 科学上网终极指南：详细配置与问题解析">WPN824 科学上网终极指南：详细配置与问题解析</a></li>
+                        <li class="py-2"><a href="/news/article-96036.htm" title="xfltd 养鸡场引入 Clash 进行高效网络管理的全面指南">xfltd 养鸡场引入 Clash 进行高效网络管理的全面指南</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">14</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">52</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer pt-160">
+        <div class="container">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>免费V2rayN 中文网 版权所有</p>
+                <p>Powered by WordPress</p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/windowsclash/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/windowsclash/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
