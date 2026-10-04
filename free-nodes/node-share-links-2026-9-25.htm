@@ -218,14 +218,9 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 8.8.8.8</pre></div>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
+    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
     <div class="panel-body">
-        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现精确域名分流？</h5></div>
-    <div class="panel-body">
-        Sing-box 可以按域名设置分流规则，将不同流量发送到指定节点。结合策略组使用，可实现网页、视频和游戏流量精准分配，提高访问速度和网络稳定性。<hr />    </div>
+        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 可以自定义规则吗？</h5></div>
@@ -233,29 +228,9 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 8.8.8.8</pre></div>
         可以。WinXray 支持编辑路由规则文件，用户可设置域名白名单或黑名单，实现分流策略。例如国内流量直连、国外流量走代理，从而提高网络访问效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
-    <div class="panel-body">
-        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>VLess 与 Reality 协议可以结合使用吗？</h5></div>
     <div class="panel-body">
         可以。VLess + Reality 是目前最受欢迎的组合之一。它在无证书情况下实现加密传输，同时具备隐蔽性与速度优势，非常适合需要安全访问的高级代理配置。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何用 iptables 限制 V2Ray 服务的访问来源？</h5></div>
-    <div class="panel-body">
-        使用 iptables 规则仅允许可信 IP 或 CDN 的中转 IP 访问服务端口，例如 `iptables -A INPUT -p tcp -s <trusted_ip> --dport 443 -j ACCEPT`，并在默认策略下拒绝其他来源，从而降低被扫描与滥用风险。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mihomo 是什么项目？</h5></div>
-    <div class="panel-body">
-        Mihomo 是 Clash Meta 的继任版本，也被称为 Clash.Meta 的社区分支。它优化了性能，支持更多协议如 Hysteria2、TUIC 等，同时提供更灵活的规则匹配系统，是目前非常流行的分流代理核心。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 的节点导入方式有哪些？</h5></div>
-    <div class="panel-body">
-        WinXray 支持手动添加节点、从 URL 订阅导入节点，以及批量导入 JSON 配置文件。用户可以直接复制订阅地址或粘贴节点链接，程序会自动解析并添加到节点列表中，操作十分便捷。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>WinXray 的 PAC 模式适合哪些使用场景？</h5></div>
@@ -265,7 +240,32 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 8.8.8.8</pre></div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Matsuri 节点延迟排序功能如何使用？</h5></div>
     <div class="panel-body">
-        Matsuri 会自动测试节点延迟，并根据结果排序。用户可以选择延迟最低的节点使用，从而优化访问速度和稳定性，尤其适合游戏、视频和海外网站加速。    </div>
+        Matsuri 会自动测试节点延迟，并根据结果排序。用户可以选择延迟最低的节点使用，从而优化访问速度和稳定性，尤其适合游戏、视频和海外网站加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现流量精细分流？</h5></div>
+    <div class="panel-body">
+        通过定义 routing 规则和策略组，Sing-box 可以根据域名、IP、端口或协议类型精细分流流量。例如视频走高速节点，网页走备用节点，实现流量优化和网络加速。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何实现精确域名分流？</h5></div>
+    <div class="panel-body">
+        Sing-box 可以按域名设置分流规则，将不同流量发送到指定节点。结合策略组使用，可实现网页、视频和游戏流量精准分配，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Mihomo 是什么项目？</h5></div>
+    <div class="panel-body">
+        Mihomo 是 Clash Meta 的继任版本，也被称为 Clash.Meta 的社区分支。它优化了性能，支持更多协议如 Hysteria2、TUIC 等，同时提供更灵活的规则匹配系统，是目前非常流行的分流代理核心。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 协议的安全性如何？</h5></div>
+    <div class="panel-body">
+        Trojan 使用与 HTTPS 类似的 TLS 加密通道，使其数据流难以与普通网页访问区分。它兼具隐蔽性与安全性，几乎无法被防火墙检测。Trojan 协议的主要优势在于稳定、安全、兼容性强，因此广受高级用户青睐。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 的节点导入方式有哪些？</h5></div>
+    <div class="panel-body">
+        WinXray 支持手动添加节点、从 URL 订阅导入节点，以及批量导入 JSON 配置文件。用户可以直接复制订阅地址或粘贴节点链接，程序会自动解析并添加到节点列表中，操作十分便捷。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -313,16 +313,16 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 8.8.8.8</pre></div>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-9-5.htm" title="免费V2rayN | 9月5日19M/S|免费SSR节点/Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点订阅节点">免费V2rayN | 9月5日19M/S|免费SSR节点/Singbox节点/Trojan节点/V2ray节点/Clash节点/Shadowrocket节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-node-subscribe.htm" title="免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点">免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-4-free-clash.htm" title="免费V2rayN | 9月4日18.7M/S|免费SSR节点/Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点订阅节点">免费V2rayN | 9月4日18.7M/S|免费SSR节点/Trojan节点/V2ray节点/Singbox节点/Clash节点/Shadowrocket节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-shadowrocket-node.htm" title="免费V2rayN | 8月6日20.7M/S|免费V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点订阅节点">免费V2rayN | 8月6日20.7M/S|免费V2ray节点/Trojan节点/SSR节点/Clash节点/Shadowrocket节点/Singbox节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-9-27.htm" title="免费V2rayN | 9月27日21.5M/S|免费V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点订阅节点">免费V2rayN | 9月27日21.5M/S|免费V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-3.htm" title="免费V2rayN | 10月3日19.9M/S|免费SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点订阅节点">免费V2rayN | 10月3日19.9M/S|免费SSR节点/Singbox节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-14-clash-v2ray-ss-ssr.htm" title="免费V2rayN | 9月14日21.1M/S|免费SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅节点">免费V2rayN | 9月14日21.1M/S|免费SSR节点/Clash节点/V2ray节点/Trojan节点/Shadowrocket节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-v2ray-subscribe-2026-9-3.htm" title="免费V2rayN | 9月3日19.1M/S|免费SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/Shadowrocket节点订阅节点">免费V2rayN | 9月3日19.1M/S|免费SSR节点/Singbox节点/Clash节点/Trojan节点/V2ray节点/Shadowrocket节点订阅节点</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-11.htm" title="免费V2rayN | 9月11日21.2M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点订阅节点">免费V2rayN | 9月11日21.2M/S|免费Shadowrocket节点/Clash节点/V2ray节点/Trojan节点/Singbox节点/SSR节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-8-11.htm" title="免费V2rayN | 8月11日19.9M/S|免费SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点订阅节点">免费V2rayN | 8月11日19.9M/S|免费SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点/V2ray节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-node-subscribe-links-2026-9-9.htm" title="免费V2rayN | 9月9日20.1M/S|免费Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅节点">免费V2rayN | 9月9日20.1M/S|免费Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Trojan节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-23.htm" title="免费V2rayN | 9月23日22.6M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点/Singbox节点订阅节点">免费V2rayN | 9月23日22.6M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Trojan节点/Clash节点/Singbox节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-26-clash-node-daily-updates.htm" title="免费V2rayN | 9月26日20.2M/S|免费Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点订阅节点">免费V2rayN | 9月26日20.2M/S|免费Trojan节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-node-subscribe.htm" title="免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点">免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-12-node-share.htm" title="免费V2rayN | 9月12日22.5M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点">免费V2rayN | 9月12日22.5M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-18-free-v2ray.htm" title="免费V2rayN | 9月18日23M/S|免费V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点/SSR节点订阅节点">免费V2rayN | 9月18日23M/S|免费V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点/SSR节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-17.htm" title="免费V2rayN | 9月17日20.7M/S|免费SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/Singbox节点订阅节点">免费V2rayN | 9月17日20.7M/S|免费SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Clash节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-21.htm" title="免费V2rayN | 9月21日21.5M/S|免费Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点订阅节点">免费V2rayN | 9月21日21.5M/S|免费Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-free-node-subscribe.htm" title="免费V2rayN | 10月2日21.4M/S|免费Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点">免费V2rayN | 10月2日21.4M/S|免费Clash节点/Singbox节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -334,10 +334,10 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to 8.8.8.8</pre></div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                     </ul>
     </div>
