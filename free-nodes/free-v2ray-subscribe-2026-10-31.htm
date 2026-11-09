@@ -286,14 +286,9 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何实现域名精确分流？</h5></div>
+    <div class="panel-heading"><h5>SSR 的协议和混淆组合如何选择？</h5></div>
     <div class="panel-body">
-        Sing-box 支持按域名匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可自动选择最优节点，提高访问速度和网络稳定性，实现精确流量管理。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
+        根据网络封锁情况选择合适协议和混淆组合，例如 tls1.2_ticket_auth 模拟 HTTPS 流量。选择最佳组合可提高抗封锁能力和稳定性，保证节点长期可用。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLess 使用 XTLS 时证书怎么配置更安全？</h5></div>
@@ -301,19 +296,9 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
         推荐使用可信 CA 签发的证书（例如 Let's Encrypt），并为服务器配置正确的域名、SNI 与证书链。避免使用自签名证书或错误域名，以免被客户端拒绝或被中间人攻击检测到。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 的多机场订阅如何整合？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流不同类型流量？</h5></div>
     <div class="panel-body">
-        Hiddify Next 提供合并订阅功能，可将多个链接导入同一配置，自动去重并分类节点。用户可设置优先级与标签，方便快速选择不同提供商的线路，提升连接灵活性与冗余度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Mellow TUN 模式与 SOCKS5 代理有什么区别？</h5></div>
-    <div class="panel-body">
-        TUN 模式拦截系统 IP 层流量，实现全局代理；SOCKS5 代理通常只影响指定应用。TUN 更适合全局加速，如游戏、视频和浏览器流量，提高网络稳定性和覆盖范围。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 的节点策略组如何提升使用体验？</h5></div>
-    <div class="panel-body">
-        策略组可将节点按延迟、用途或地理位置分类，通过规则自动选择最优节点。用户无需手动切换节点即可获得最佳速度和稳定性，提高浏览和观看流媒体的体验。<hr />    </div>
+        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组可实现精准分流，提高访问速度和网络稳定性，优化整体网络体验和管理效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 使用 TAP 驱动时 Windows 弹出网络变更提示，该如何处理？</h5></div>
@@ -321,19 +306,34 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
         这是正常现象，TAP 虚拟网卡会改变系统网络状态。建议在首次启用时允许驱动安装并授予网络权限，若频繁弹窗可在网络设置中调整网络识别类型或将 TAP 设为非计量连接。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的协议和混淆组合如何选择？</h5></div>
+    <div class="panel-heading"><h5>Sing-box 如何实现域名精确分流？</h5></div>
     <div class="panel-body">
-        根据网络封锁情况选择合适协议和混淆组合，例如 tls1.2_ticket_auth 模拟 HTTPS 流量。选择最佳组合可提高抗封锁能力和稳定性，保证节点长期可用。<hr />    </div>
+        Sing-box 支持按域名匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可自动选择最优节点，提高访问速度和网络稳定性，实现精确流量管理。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
+    <div class="panel-heading"><h5>Mellow TUN 模式与 SOCKS5 代理有什么区别？</h5></div>
     <div class="panel-body">
-        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。<hr />    </div>
+        TUN 模式拦截系统 IP 层流量，实现全局代理；SOCKS5 代理通常只影响指定应用。TUN 更适合全局加速，如游戏、视频和浏览器流量，提高网络稳定性和覆盖范围。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 的多机场订阅如何整合？</h5></div>
+    <div class="panel-body">
+        Hiddify Next 提供合并订阅功能，可将多个链接导入同一配置，自动去重并分类节点。用户可设置优先级与标签，方便快速选择不同提供商的线路，提升连接灵活性与冗余度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否能与其他客户端共存？</h5></div>
     <div class="panel-body">
-        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。    </div>
+        可以。Nekobox 配置独立，不影响其他客户端的运行。用户可同时安装 Clash、Mellow 或 Shadowrocket，按需切换使用，互不干扰。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 的节点策略组如何提升使用体验？</h5></div>
+    <div class="panel-body">
+        策略组可将节点按延迟、用途或地理位置分类，通过规则自动选择最优节点。用户无需手动切换节点即可获得最佳速度和稳定性，提高浏览和观看流媒体的体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何自动切换最佳节点？</h5></div>
+    <div class="panel-body">
+        通过延迟测速和策略组设置，PassWall2 可自动选择延迟最低的节点处理流量。用户无需手动切换节点，保证网页、视频和游戏流量的速度和稳定性，提高整体网络体验。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -381,16 +381,16 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-10-28-clash-node.htm" title="免费V2rayN | 10月28日20M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点订阅节点">免费V2rayN | 10月28日20M/S|免费SSR节点/V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/Singbox节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-27.htm" title="免费V2rayN | 10月27日20.5M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Trojan节点订阅节点">免费V2rayN | 10月27日20.5M/S|免费Clash节点/SSR节点/Shadowrocket节点/V2ray节点/Singbox节点/Trojan节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-12-node-share.htm" title="免费V2rayN | 9月12日22.5M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点">免费V2rayN | 9月12日22.5M/S|免费Shadowrocket节点/Singbox节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-26-node-share.htm" title="免费V2rayN | 10月26日18.6M/S|免费Clash节点/SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点订阅节点">免费V2rayN | 10月26日18.6M/S|免费Clash节点/SSR节点/V2ray节点/Trojan节点/Singbox节点/Shadowrocket节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/shadowrocket-node-2026-10-23.htm" title="免费V2rayN | 10月23日19.7M/S|免费SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点订阅节点">免费V2rayN | 10月23日19.7M/S|免费SSR节点/Trojan节点/Clash节点/Singbox节点/Shadowrocket节点/V2ray节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-28-clash-v2ray-ss-ssr.htm" title="免费V2rayN | 9月28日21.9M/S|免费Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点订阅节点">免费V2rayN | 9月28日21.9M/S|免费Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点/Trojan节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-11-2-free-v2ray.htm" title="免费V2rayN | 11月2日18.2M/S|免费Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/SSR节点订阅节点">免费V2rayN | 11月2日18.2M/S|免费Singbox节点/V2ray节点/Trojan节点/Shadowrocket节点/Clash节点/SSR节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-9-21.htm" title="免费V2rayN | 9月21日21.5M/S|免费Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点订阅节点">免费V2rayN | 9月21日21.5M/S|免费Singbox节点/Trojan节点/SSR节点/V2ray节点/Shadowrocket节点/Clash节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-30-free-ssr-subscribe.htm" title="免费V2rayN | 10月30日21.2M/S|免费SSR节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点">免费V2rayN | 10月30日21.2M/S|免费SSR节点/Clash节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/clash-windows-2026-10-15.htm" title="免费V2rayN | 10月15日19M/S|免费SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点订阅节点">免费V2rayN | 10月15日19M/S|免费SSR节点/Shadowrocket节点/V2ray节点/Clash节点/Singbox节点/Trojan节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-20-free-node-subscribe.htm" title="免费V2rayN | 10月20日20.1M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点订阅节点">免费V2rayN | 10月20日20.1M/S|免费Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-11-8-clash-node-daily-updates.htm" title="免费V2rayN | 11月8日21.2M/S|免费Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点订阅节点">免费V2rayN | 11月8日21.2M/S|免费Shadowrocket节点/SSR节点/Trojan节点/Clash节点/V2ray节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-29.htm" title="免费V2rayN | 10月29日22M/S|免费Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点">免费V2rayN | 10月29日22M/S|免费Singbox节点/Shadowrocket节点/Trojan节点/Clash节点/V2ray节点/SSR节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-11-5.htm" title="免费V2rayN | 11月5日21M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点订阅节点">免费V2rayN | 11月5日21M/S|免费SSR节点/Singbox节点/Shadowrocket节点/Clash节点/Trojan节点/V2ray节点订阅节点</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/clash-windows-2026-10-17.htm" title="免费V2rayN | 10月17日22.5M/S|免费SSR节点/Clash节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点订阅节点">免费V2rayN | 10月17日22.5M/S|免费SSR节点/Clash节点/V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点订阅节点</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-24-free-node-subscribe.htm" title="免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点">免费V2rayN | 9月24日18M/S|免费Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-10-25.htm" title="免费V2rayN | 10月25日20.6M/S|免费Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Singbox节点订阅节点">免费V2rayN | 10月25日20.6M/S|免费Shadowrocket节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Singbox节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-14-free-node-subscribe.htm" title="免费V2rayN | 10月14日18.1M/S|免费Clash节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点订阅节点">免费V2rayN | 10月14日18.1M/S|免费Clash节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点订阅节点</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-11-9.htm" title="免费V2rayN | 11月9日20M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点">免费V2rayN | 11月9日20M/S|免费SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点订阅节点</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -402,13 +402,10 @@ A：不建议。权限提示是iOS为了保护用户隐私设定的机制，禁�
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                     </ul>
     </div>
